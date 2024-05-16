@@ -218,8 +218,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js"></script>
     {{-- <script src="{{ asset('/js/dashboard.js') }}"></script> --}}
     <script src="{{ asset('/js/color-modes.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.8/dist/jquery.inputmask.min.js"></script>
     {{-- BLocUI Loading --}}
-    <script src="https://cdn.jsdelivr.net/npm/blockui@2.7.1/jquery.blockUI.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+    <script src="{{ asset('/js/projeto.js') }}"></script>
 </body>
 
 </html>
