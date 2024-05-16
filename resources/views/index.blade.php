@@ -213,10 +213,13 @@
         </div>
     </div>
     @yield('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('/js/bootstrap.bundle.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js"></script>
     {{-- <script src="{{ asset('/js/dashboard.js') }}"></script> --}}
     <script src="{{ asset('/js/color-modes.js') }}"></script>
+    {{-- BLocUI Loading --}}
+    <script src="https://cdn.jsdelivr.net/npm/blockui@2.7.1/jquery.blockUI.min.js"></script>
 </body>
 
 </html>

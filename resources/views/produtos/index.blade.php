@@ -6,12 +6,15 @@
         <h1 class="h2">Produtos</h1>
     </div>
     <div>
-        <form action="" method="get">
+        <form action="{{route('produtos.index')}}" method="get">
             <input type="text" name="pesquisar" id="" placeholder="Digite o nome">
             <button>Pesquisar</button>
             <a type="button" href="" class="btn btn-success float-end">Incluir Produto</a>
         </form>
         <div class="table-responsive mt-4 small">
+            @if ($produtos->isEmpty())
+                <p> Não existe dados de Produto </p>
+            @else
             <table class="table table-striped table-sm">
                 <thead>
                     <tr>
@@ -27,12 +30,13 @@
                             <td>{{ 'R$' . ' ' . number_format($produto->valor, 2, ',', '.') }}</td>
                             <td>
                                 <a type="buttton" class="btn btn-outline-warning btn-sm" href="#">Editar</a>
-                                <a type="buttton" class="btn btn-outline-danger btn-sm" href="#">Excluir</a>
+                                <a type="buttton" class="btn btn-outline-danger btn-sm" href="{{route('produtos.destroy')}}">Excluir</a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+            @endif
         </div>
     </div>
 @endsection
