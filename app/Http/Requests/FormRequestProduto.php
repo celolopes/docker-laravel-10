@@ -29,6 +29,13 @@ class FormRequestProduto extends FormRequest
             ];
         }
 
+        if ($this->method() == "PUT") {
+            $request = [
+                'nome' =>'required|max:255',
+                'valor' =>'required',
+            ];
+        }
+
         return $request;
     }
 
