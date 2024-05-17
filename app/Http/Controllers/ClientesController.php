@@ -26,7 +26,7 @@ class ClientesController extends Controller
     {
         $cliente = $this->cliente->find($request->id);
         $cliente->delete();
-        Toastr::warning('Produto deletado com sucesso.', 'SISTEMA GESTÃO');
+        Toastr::warning('Cliente deletado com sucesso.', 'SISTEMA GESTÃO');
         return response()->json(['success' => true], 200);
     }
 

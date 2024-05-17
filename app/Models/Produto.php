@@ -16,7 +16,7 @@ class Produto extends Model
             if ($search) {
                 $query->where('nome', 'like', '%'. $search . '%');
             }
-        })->get();
+        })->paginate(10);
 
         return $produto;
     }

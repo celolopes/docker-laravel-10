@@ -39,6 +39,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="pagination-wrapper">
+                    {{ $produtos->appends(request()->query())->onEachSide(0)->links() }}
+                </div>
             @endif
         </div>
     </div>
