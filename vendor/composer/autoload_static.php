@@ -537,6 +537,7 @@ class ComposerStaticInit121ea3a2fffe49b3ef9aa4d064b28c19
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\ClientesController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClientesController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\ProdutosController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProdutosController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
@@ -550,6 +551,7 @@ class ComposerStaticInit121ea3a2fffe49b3ef9aa4d064b28c19
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\FormRequestProduto' => __DIR__ . '/../..' . '/app/Http/Requests/FormRequestProduto.php',
+        'App\\Models\\Cliente' => __DIR__ . '/../..' . '/app/Models/Cliente.php',
         'App\\Models\\Componentes' => __DIR__ . '/../..' . '/app/Models/Componentes.php',
         'App\\Models\\Produto' => __DIR__ . '/../..' . '/app/Models/Produto.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
