@@ -9,7 +9,7 @@
         <form action="{{ route('clientes.index') }}" method="get">
             <input type="text" name="pesquisar" id="" placeholder="Digite o nome">
             <button class="btn btn-bd-primary btn-sm">Pesquisar</button>
-            <a type="button" href="{{ route('produtos.create') }}" class="btn btn-success float-end">Incluir Clientes</a>
+            <a type="button" href="{{ route('clientes.create') }}" class="btn btn-success float-end">Incluir Clientes</a>
         </form>
         <div class="table-responsive mt-4 small">
             @if ($clientes->isEmpty())

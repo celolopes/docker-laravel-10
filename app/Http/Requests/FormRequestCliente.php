@@ -11,7 +11,7 @@ class FormRequestCliente extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,40 @@ class FormRequestCliente extends FormRequest
      */
     public function rules(): array
     {
+        $request = [];
+        if ($this->method() == "POST") {
+            $request = [
+                'nome' =>'required|max:255',
+                'email' =>'required|unique:clientes,email|max:255',
+                'cep' =>'max:9',
+            ];
+        }
+
+        if ($this->method() == "PUT") {
+            $request = [
+                'nome' =>'required|max:255',
+                'email' =>'required|max:255',
+                'cep' =>'max:9',
+            ];
+        }
+
+        return $request;
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+     public function messages(): array
+    {
         return [
-            //
+            'nome.required' => 'O campo nome é obrigatório',
+            'email.required' => 'O campo valor é obrigatório',
+            'email.unique' => 'Este produto já está cadastrado',
+            'nome.max' => 'O campo nome deve ter no máximo 255 caracteres',
+            'email.max' => 'O campo email deve ter no máximo 255 caracteres',
+            'cep.max' => 'O campo cep deve ter no máximo 9 caracteres',
         ];
     }
 }

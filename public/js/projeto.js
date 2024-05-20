@@ -31,3 +31,33 @@ function deleteRegisterIndex(rotaUrl, idDoRegistro) {
 }
 
 $("#mascara_valor").mask("#.##0,00", { reverse: true });
+$("#cep").mask("00000-000", { reverse: true });
+
+//Busca do CEP ViaCep
+$('#cep').blur(function() {
+    var cep = $(this).val().replace(/\D/g, '');
+    if (cep!= "") {
+        var validacep = /^[0-9]{8}$/;
+        if(validacep.test(cep)) {
+            $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+                if (!("erro" in dados)) {
+                    $("#endereco").val(dados.logradouro + ", ");
+                    if (dados.complemento == "") {
+                        $("#logradouro").val(dados.localidade + " - " + dados.uf);
+                    } else {
+                        $("#logradouro").val(dados.complemento + ", " + dados.localidade + " - " + dados.uf);
+                    }
+                    $("#bairro").val(dados.bairro);
+                } else {
+                    alert("CEP não encontrado.");
+                }
+            });
+        } else {
+            alert("Formato de CEP inválido.");
+        }
+    } else {
+        $("#logradouro").val("");
+        $("#endereco").val("");
+        $("#bairro").val("");
+    }
+});

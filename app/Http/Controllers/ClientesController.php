@@ -44,7 +44,6 @@ class ClientesController extends Controller
                 return redirect()->route('clientes.create')->with('error', 'Falha ao inserir o cliente.');
             }
         };
-
         return view('clientes.create');
     }
 
