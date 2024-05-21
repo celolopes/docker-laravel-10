@@ -8,6 +8,8 @@ use App\Http\Requests\FormRequestVenda;
 use App\Models\Produto;
 use App\Models\Cliente;
 use Brian2694\Toastr\Facades\Toastr;
+use App\Mail\ComprovanteDeVendaEmail;
+use Illuminate\Support\Facades\Mail;
 
 class VendaController extends Controller
 {
@@ -47,5 +49,23 @@ class VendaController extends Controller
         };
 
         return view('vendas.create', compact('numero_da_venda', 'findProduto', 'findCliente'));
+    }
+
+    public function enviaEmail($id) {
+        $venda = $this->venda->find($id);
+        $nomeProduto = $venda->produto->nome;
+        $valorProduto = $venda->produto->valor;
+        $findCliente = $venda->cliente->email;
+        $clienteNome = $venda->cliente->nome;
+        $sendMailData = [
+            'produtoNome' => $nomeProduto,
+            'produtoValor' => $valorProduto,
+            'body' => $clienteNome,
+            'venda' => $venda
+        ];
+
+        Mail::to($findCliente)->send(new ComprovanteDeVendaEmail($sendMailData));
+        Toastr::success('Email enviado com sucesso.', 'SISTEMA GESTÃO');
+        return redirect()->route('vendas.index')->with('success', 'Email enviado com sucesso.');
     }
 }

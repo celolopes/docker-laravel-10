@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\VendaController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +18,8 @@ use App\Http\Controllers\VendaController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::prefix('dashboard')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 });
 
 Route::prefix('produtos')->group(function () {
@@ -42,5 +44,14 @@ Route::prefix('vendas')->group(function () {
     Route::get('/', [VendaController::class, 'index'])->name('vendas.index');
     Route::get('/create', [VendaController::class, 'create'])->name('vendas.create');
     Route::post('/store', [VendaController::class, 'create'])->name('vendas.store');
+    Route::get('/envia-email/{id}', [VendaController::class, 'enviaEmail'])->name('vendas.envia-email');
 });
 
+Route::prefix('usuarios')->group(function () {
+    Route::get('/', [UsuarioController::class, 'index'])->name('usuarios.index');
+    Route::get('/create', [UsuarioController::class, 'create'])->name('usuarios.create');
+    Route::post('/store', [UsuarioController::class, 'create'])->name('usuarios.store');
+    Route::get('/edit/{id}', [UsuarioController::class, 'update'])->name('usuarios.edit');
+    Route::put('/update/{id}', [UsuarioController::class, 'update'])->name('usuarios.update');
+    Route::delete('/delete', [UsuarioController::class, 'destroy'])->name('usuarios.destroy');
+});

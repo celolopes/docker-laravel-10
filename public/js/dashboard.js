@@ -1,35 +1,27 @@
 /* globals Chart:false */
 
-(() => {
-	"use strict";
+const ctx = document.getElementById("myChart").getContext('2d');
 
-	// Graphs
-	const ctx = document.getElementById("myChart");
-	// eslint-disable-next-line no-unused-vars
-	const myChart = new Chart(ctx, {
-		type: "line",
-		data: {
-			labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-			datasets: [
-				{
-					data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-					lineTension: 0,
-					backgroundColor: "transparent",
-					borderColor: "#007bff",
-					borderWidth: 4,
-					pointBackgroundColor: "#007bff",
-				},
-			],
-		},
-		options: {
-			plugins: {
-				legend: {
-					display: false,
-				},
-				tooltip: {
-					boxPadding: 3,
-				},
-			},
-		},
-	});
-})();
+// Mapear os dados para o formato necessário para o gráfico
+const labels = vendasData.map(venda => venda.produto_nome);
+const data = vendasData.map((venda) => venda.total_vendas); // Assumindo que há um campo 'valor' nas vendas
+
+// Criar o gráfico
+new Chart(ctx, {
+    type: "bar",
+    data: {
+        labels: labels,
+        datasets: [{
+            label: "# de Vendas",
+            data: data,
+            borderWidth: 1,
+        }],
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+            },
+        },
+    },
+});

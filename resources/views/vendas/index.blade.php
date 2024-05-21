@@ -31,7 +31,7 @@
                                 <td>{{ $venda->cliente->nome }}</td>
                                 <td>{{ $venda->produto->nome }}</td>
                                 <td>
-                                    <a type="button" class="btn btn-light btn-sm" href="">Enviar E-mail</a>
+                                    <a type="button" class="btn btn-light btn-sm" href="{{ route('vendas.envia-email', $venda->id) }}">Enviar E-mail</a>
                                 </td>
                             </tr>
                         @endforeach

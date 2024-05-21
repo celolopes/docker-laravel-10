@@ -23,6 +23,16 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function getUsuariosPesquisarIndex(?string $search = '') {
+        $usuario = $this->where(function ($query) use ($search) {
+            if ($search) {
+                $query->where('name', 'like', '%'. $search . '%');
+            }
+        })->paginate(10);
+
+        return $usuario;
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
