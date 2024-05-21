@@ -17,7 +17,7 @@ class Venda extends Model
             if ($search) {
                 $query->where('numero_da_venda', 'like', '%'. $search . '%');
             }
-        })->paginate(10);
+        })->orderBy('numero_da_venda', 'desc')->paginate(10);
 
        return $venda;
     }
