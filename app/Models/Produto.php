@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Venda;
 
 class Produto extends Model
 {
@@ -19,5 +20,9 @@ class Produto extends Model
         })->paginate(10);
 
         return $produto;
+    }
+
+    public function venda() {
+        return $this->hasMany(Venda::class);
     }
 }

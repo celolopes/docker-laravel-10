@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\VendaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,5 +38,9 @@ Route::prefix('clientes')->group(function () {
     Route::delete('/delete', [ClientesController::class, 'destroy'])->name('clientes.destroy');
 });
 
-
+Route::prefix('vendas')->group(function () {
+    Route::get('/', [VendaController::class, 'index'])->name('vendas.index');
+    Route::get('/create', [VendaController::class, 'create'])->name('vendas.create');
+    Route::post('/store', [VendaController::class, 'create'])->name('vendas.store');
+});
 
