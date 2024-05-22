@@ -9,7 +9,8 @@
         <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" aria-current="page" href=" {{ route('dashboard.index') }} ">
+                    <a class="nav-link d-flex align-items-center gap-2" aria-current="page"
+                        href=" {{ route('dashboard.index') }} ">
                         <svg class="bi">
                             <use xlink:href="#house-fill" />
                         </svg>
@@ -54,7 +55,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                    <form id="delete-form" action="{{ route('profile.destroy') }}" method="POST"
+                        style="display: none;">
+                        @csrf
+                        @method('DELETE')
+                    </form>
+                    <a class="nav-link d-flex align-items-center gap-2" href="#"
+                        onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
                         <svg class="bi">
                             <use xlink:href="#door-closed" />
                         </svg>
